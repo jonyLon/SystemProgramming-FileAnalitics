@@ -1,0 +1,54 @@
+﻿<Window x:Class="FileSearch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Search" Height="450" Width="800"
+        Background="#8278A3">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#4B968A"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#C7BD49"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="#4B968A"/>
+        </Style>
+        <Style TargetType="ProgressBar">
+            <Setter Property="Background" Value="#C7BD49"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Enter the word to search:" Margin="12"/>
+        <TextBox Grid.Row="0" Name="WordTextBox" Margin="161,10,5,10" Padding="3"/>
+
+        <TextBlock Grid.Row="1" Text="Enter the directory path:" Margin="12"/>
+        <TextBox Grid.Row="1" Name="DirectoryTextBox" Margin="161,10,5,10" Padding="3"/>
+
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Search" Padding="5" Click="SearchButton_Click" Margin="5"/>
+
+        <ListView Grid.Row="3" Name="ResultListView" Margin="5,5,5,40">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="File Name" DisplayMemberBinding="{Binding FileName}"/>
+                    <GridViewColumn Header="File Path" DisplayMemberBinding="{Binding FilePath}"/>
+                    <GridViewColumn Header="Occurrences of the Word" DisplayMemberBinding="{Binding WordOccurrences}"/>
+                    <GridViewColumn Header="Total Words in File" DisplayMemberBinding="{Binding TotalWordsInFile}"/>
+                    <GridViewColumn Header="Percentage of Occurrences" DisplayMemberBinding="{Binding PercentageOfOccurrences}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
